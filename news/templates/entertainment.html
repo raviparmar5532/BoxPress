@@ -1,0 +1,39 @@
+{% load static %}
+<html>
+	<head>
+		<link rel="stylesheet" href="{% static 'style.css' %}"/>
+        <title>Entertainment News</title>
+    </head>
+    <body>
+		<header>
+			<h1><a href="home.html">Box Press</a></h1>
+			<nav>
+				<ul>
+					<li><a href="home.html">All</a></li>
+					<li><a href="sports.html">Sports</a></li>
+					<li><a href="business.html">Business</a></li>
+					<li><a href="entertainment.html" class="current">Entertainment</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="newswrapper">
+			<section class="grid">
+				{% for i in data%}
+					<article>
+						<a href="#"><img src={{i.imageUrl}} height="fir-content" width = "100%" alt=""/></a>
+						<p></p>
+						<h1>{{i.title}}</h1>
+						<p>{{i.content}}</p>
+						<p>Date: {{i.date}}</p>
+						<p>By - {{i.author}}</p>
+						{% if i.readMoreUrl == None %}
+							<a href="#" class="readmore" disabled>Read more</a>
+						{% else %}
+							<a href="{{i.readMoreUrl}}" class="readmore">Read more</a>
+						{% endif %}
+					</article>
+				{% endfor %}
+			</section>
+		</div>
+	</body>
+</html>
